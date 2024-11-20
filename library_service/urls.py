@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from books.views import BookViewSet
+from django.urls.conf import include
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register("books", BookViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("api/library_service/", include(router.urls)),
 ]
