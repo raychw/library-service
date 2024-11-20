@@ -19,15 +19,12 @@ from django.urls import path
 from books.views import BookViewSet
 from django.urls.conf import include
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 
 router = DefaultRouter()
 router.register("books", BookViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/library_service/", include(router.urls)),
+    path("api/library_service/", include("users.urls"), name="user"),
 ]
