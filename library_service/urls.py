@@ -25,5 +25,5 @@ router.register("books", BookViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include(router.urls)),
+    path("api/library_service/", include(router.urls)),
 ]
